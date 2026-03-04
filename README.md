@@ -28,9 +28,9 @@ This app allows users to search for any city and view real-time weather data inc
 
 ---
 
-## 📷 Screenshot
+## 📷 App Screenshot
 
-(Add a screenshot of your app here later)
+![Weather App Screenshot ](screenshot.png)
 
 ---
 
