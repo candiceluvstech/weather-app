@@ -33,7 +33,7 @@ This app allows users to search for any city and view real-time weather data inc
 ![Weather App Screenshot ](screenshot.png)
 
 ---
-📌 What I Learned
+## 👩🏽‍💻 What I Learnt 
 
 How to fetch data from an API
 
