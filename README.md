@@ -33,6 +33,16 @@ This app allows users to search for any city and view real-time weather data inc
 ![Weather App Screenshot ](screenshot.png)
 
 ---
+📌 What I Learned
+
+How to fetch data from an API
+
+How to manipulate the DOM using JavaScript
+
+How to deploy a project using GitHub Pages
+
+How to manage version control using Git
+
 
 ## 🌍 Future Improvements
 
