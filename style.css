@@ -4,14 +4,53 @@
     font-family: 'Poppins', san-serif;
     box-sizing: border-box;
 }
+:root {
+    --bg-color: #ffffff;
+    --text-color: #222;
+    --card-bg: linear-gradient(135deg, #00feba, #5b548a);
+    --card-text: #ffffff;
+    --input-bg: #ebfffc;
+    --input-text: #555;
+    --button-bg: #ebfffc;
+}
+html {
+    background: var(--bg-color);
+}
+
 body{
-    background: #222;
+    min-height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+    padding: 24px;
+}
+
+body.dark-mode {
+    --bg-color: #111827;
+    --text-color: #f3f4f6;
+    --card-bg: linear-gradient(135deg, #1f2937, #4c1d95);
+    --card-text: #f9fafb;
+    --input-bg: #374151;
+    --input-text: #f3f4f6;
+    --button-bg: #374151;
+}
+
+#theme-toggle {
+    border: 0;
+    outline: 0;
+    padding: 10px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    margin: 0 auto 20px;
+    display: block;
+    background: var(--button-bg);
+    color: var(--input-text);
 }
 .card{
     width: 90%;
     max-width: 470px;
-    background: linear-gradient(135deg, #00feba, #5b548a);
-    color: #fff;
+    background: var(--card-bg);
+    color: var(--card-text);
     margin: 100px auto 0;
     border-radius: 20px;
     padding: 40px 35px;
@@ -26,8 +65,8 @@ body{
 .search input{
     border: 0;
     outline: 0;
-    background: #ebfffc;
-    color: #555;
+    background: var(--input-bg);
+    color: var(--input-text);
     padding: 10px 25px;
     height: 60px;
     border-radius: 30px;
@@ -38,7 +77,7 @@ body{
 .search button {
     border: 0;
     outline: 0;
-    background: #ebfffc;
+    background: var(--button-bg);
     border-radius: 50%;
     width: 60px;
     height: 60px;

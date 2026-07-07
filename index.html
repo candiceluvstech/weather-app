@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <button id="theme-toggle" type="button" aria-pressed="false">🌙 Dark Mode</button>
 
 <div class="card">
     <div class="search">
@@ -39,9 +40,24 @@
 const apiKey="38b390090b0e1dfb848bcbad6fc00d41";
 const apiUrl="https://api.openweathermap.org/data/2.5/weather?q=";
 
-const searchBox = document.querySelector(".search input");
-const searchBtn = document.querySelector(".search button");
+const searchBlock = document.querySelector(".card .search");
+const searchBox = searchBlock.querySelector("input");
+const searchBtn = searchBlock.querySelector("button");
 const weatherIcon = document.querySelector(".weather-icon");
+const themeToggle = document.getElementById("theme-toggle");
+
+function setTheme(isDarkMode) {
+    document.body.classList.toggle("dark-mode", isDarkMode);
+    themeToggle.textContent = isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode";
+    themeToggle.setAttribute("aria-pressed", String(isDarkMode));
+}
+
+themeToggle.addEventListener("click", () => {
+    const isDarkMode = !document.body.classList.contains("dark-mode");
+    setTheme(isDarkMode);
+});
+
+setTheme(false);
 
 
 async function checkWeather(city){
