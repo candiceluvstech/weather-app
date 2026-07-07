@@ -1,21 +1,23 @@
 # 🌦️ Weather App
 
-A simple and responsive weather application built using HTML, CSS, and JavaScript.
+A modern responsive weather application built using HTML, CSS, and JavaScript that allows users to search for real-time weather information for any city using the OpenWeather API.
 
-This app allows users to search for any city and view real-time weather data including temperature, humidity, and wind speed.
+🚀 Live Demo
+
+https://firstweatherdashboard.netlify.app/
 
 ---
 
 ## 🚀 Features
 
 - Search weather by city name
-- Displays:
-  - Temperature
-  - Humidity
-  - Wind speed
-- Dynamic weather icons
+- View real-time temparature
+- Display humidity
+- Display wind speed
+- Dynamic weather icons based on weather conditions 
+- Dark mode / Light mode toggle 
+- Responsive design for mobile and desktop devices 
 - Error handling for invalid city names
-- Clean and modern UI design
 
 ---
 
@@ -25,31 +27,36 @@ This app allows users to search for any city and view real-time weather data inc
 - CSS
 - JavaScript
 - OpenWeather API
+-Git & Github
+-Netlify
 
 ---
 
-## 📷 App Screenshot
+## 📷 App Screenshots
 
-![Weather App Screenshot ](screenshot.png)
+### Light Mode
+![Light Mode](images/light-mode.png)
+
+### Dark Mode
+![Dark Mode](images/dark-mode.png)
 
 ---
-## 👩🏽‍💻 What I Learnt 
+## 👩🏽‍💻 What I Learnt
 
-How to fetch data from an API
+Building this project helped me strengthen my skills in several areas, including:
 
-How to manipulate the DOM using JavaScript
-
-How to deploy a project using GitHub Pages
-
-How to manage version control using Git
-
+- Fetching and displaying data from a real API
+- Manipulating the DOM with JavaScript to update the UI dynamically
+- Creating a responsive and user-friendly interface with HTML and CSS
+- Implementing a dark mode and light mode toggle for better usability
+- Deploying a project and managing it with Git and GitHub
 
 ## 🌍 Future Improvements
 
-- Add 5-day forecast
-- Add loading animation
-- Improve mobile responsiveness
-- Add dark mode toggle
+- Add 5-day weather forecast
+- Display weather based on the user's current location 
+- Add a loading spinner while data is being fetched
+- Add a temparature unit toggle 
 
 ---
 
