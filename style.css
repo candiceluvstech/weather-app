@@ -178,13 +178,16 @@ body.dark-mode {
     }
 
     .search {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .search input {
         height: 50px;
-        margin-right: 0;
+        margin-right: 12px;
+        width: auto;
+        flex: 1;
     }
 
     .search button {
@@ -196,12 +199,12 @@ body.dark-mode {
     }
 
     .details {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
         padding: 0;
     }
 
     .col {
-        width: 100%;
+        width: auto;
     }
 }
