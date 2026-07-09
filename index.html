@@ -1,130 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A modern responsive weather application. Search real-time weather information for any city including temperature, humidity, and wind speed.">
-        <meta name="theme-color" content="#2c3e50">
-        <meta name="keywords" content="weather, forecast, temperature, humidity, wind speed">
-        
-        <!-- LinkedIn / Open Graph Meta Tags -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://firstweatherdashboard.netlify.app/">
-        <meta property="og:title" content="Weather App - Real-Time Weather Information">
-        <meta property="og:description" content="Get real-time weather information for any city. View temperature, humidity, and wind speed with dynamic weather icons.">
-        <meta property="og:image" content="https://firstweatherdashboard.netlify.app/images/og-image.png">
-        <meta property="og:image:alt" content="Weather App preview showing a modern weather dashboard">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        
-        <!-- Canonical URL -->
-        <meta name="canonical" href="https://firstweatherdashboard.netlify.app/">
-        
-        <title>Weather App - Real-Time Weather Information</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <button id="theme-toggle" type="button" aria-pressed="false">🌙 Dark Mode</button>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern responsive weather application. Search real-time weather information for any city including temperature, humidity, and wind speed.">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="keywords" content="weather, forecast, temperature, humidity, wind speed">
 
-<div class="card">
-    <div class="search">
-        <input type="text" placeholder="Enter city name"
-        spellcheck="false">
-        <button><img src="images/search.png"></button>
-        </div>
-        <div class="error">Invalid city name</div>
-        <div class="weather">
-        <img src="images/rain.png" class="weather-icon">
-<h1 class="temp">22°c</h1>
-<h2 class="city">Cape Town</h2>
-    <div class="details">
-        <div class="col">
-            <img src="images/humidity.png">
+    <!-- LinkedIn / Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://firstweatherdashboard.netlify.app/">
+    <meta property="og:title" content="Weather App - Real-Time Weather Information">
+    <meta property="og:description" content="Get real-time weather information for any city. View temperature, humidity, and wind speed with dynamic weather icons.">
+    <meta property="og:image" content="https://firstweatherdashboard.netlify.app/images/og-image.png">
+    <meta property="og:image:alt" content="Weather App preview showing a modern weather dashboard">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Canonical URL -->
+    <meta name="canonical" href="https://firstweatherdashboard.netlify.app/">
+
+    <title>Weather App - Real-Time Weather Information</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <button id="theme-toggle" type="button" aria-pressed="false">🌙 Dark Mode</button>
+
+    <main class="card" aria-label="Weather application">
+      <form class="search" role="search">
+        <input id="city-input" name="city" type="text" placeholder="Enter city name" spellcheck="false" autocomplete="off">
+        <button type="submit" aria-label="Search weather">
+          <img src="images/search.png" alt="">
+        </button>
+      </form>
+
+      <div class="error" role="alert">Invalid city name</div>
+
+      <section class="weather" aria-live="polite">
+        <img src="images/rain.png" class="weather-icon" alt="Weather icon">
+        <h1 class="temp">22°c</h1>
+        <h2 class="city">Cape Town</h2>
+
+        <div class="details">
+          <div class="col">
+            <img src="images/humidity.png" alt="Humidity icon">
             <div>
-                <p class="humidity">50%</p>
-                <p>Humidity</p>
+              <p class="humidity">50%</p>
+              <p>Humidity</p>
             </div>
-        </div>
-        <div class="col">
-            <img src="images/wind.png">
+          </div>
+          <div class="col">
+            <img src="images/wind.png" alt="Wind icon">
             <div>
-                <p class="wind">15 km/h</p>
-                <p>Wind Speed</p>
+              <p class="wind">15 km/h</p>
+              <p>Wind Speed</p>
             </div>
+          </div>
         </div>
-    </div>
-</div> 
-<script>
-const apiKey="38b390090b0e1dfb848bcbad6fc00d41";
-const apiUrl="https://api.openweathermap.org/data/2.5/weather?q=";
+      </section>
+    </main>
 
-const searchBlock = document.querySelector(".card .search");
-const searchBox = searchBlock.querySelector("input");
-const searchBtn = searchBlock.querySelector("button");
-const weatherIcon = document.querySelector(".weather-icon");
-const themeToggle = document.getElementById("theme-toggle");
+    <script>
+      const apiKey = "38b390090b0e1dfb848bcbad6fc00d41";
+      const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
 
-function setTheme(isDarkMode) {
-    document.body.classList.toggle("dark-mode", isDarkMode);
-    themeToggle.textContent = isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode";
-    themeToggle.setAttribute("aria-pressed", String(isDarkMode));
-    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-}
+      const searchForm = document.querySelector(".search");
+      const searchBox = document.getElementById("city-input");
+      const weatherIcon = document.querySelector(".weather-icon");
+      const themeToggle = document.getElementById("theme-toggle");
+      const weatherBlock = document.querySelector(".weather");
+      const errorBlock = document.querySelector(".error");
 
-themeToggle.addEventListener("click", () => {
-    const isDarkMode = !document.body.classList.contains("dark-mode");
-    setTheme(isDarkMode);
-});
+      function setTheme(isDarkMode) {
+        document.body.classList.toggle("dark-mode", isDarkMode);
+        themeToggle.textContent = isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode";
+        themeToggle.setAttribute("aria-pressed", String(isDarkMode));
+        localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+      }
 
-const savedTheme = localStorage.getItem("theme");
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-setTheme(savedTheme ? savedTheme === "dark" : prefersDark);
+      themeToggle.addEventListener("click", () => {
+        const isDarkMode = !document.body.classList.contains("dark-mode");
+        setTheme(isDarkMode);
+      });
 
+      searchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const city = searchBox.value.trim();
 
-async function checkWeather(city){
-    const response = await fetch(`${apiUrl}${city}&appid=${apiKey}&units=metric`);
+        if (!city) return;
+        checkWeather(city);
+      });
 
-if (!response.ok) {
-    document.querySelector(".weather").style.display = "none";
-    document.querySelector(".error").style.display = "block";
-    return;
-}
-    const data = await response.json();
+      async function checkWeather(city) {
+        const response = await fetch(`${apiUrl}${city}&appid=${apiKey}&units=metric`);
 
-    document.querySelector(".city").innerHTML = data.name;
-document.querySelector(".temp").innerHTML = Math.round(data.main.temp)  + "°c" ;
-document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+        if (!response.ok) {
+          weatherBlock.style.display = "none";
+          errorBlock.style.display = "block";
+          return;
+        }
 
-if(data.weather[0].main =="Clouds"){
- weatherIcon.src = "images/clouds.png";
-}
+        const data = await response.json();
 
-else if(data.weather[0].main =="Clear"){
-    weatherIcon.src = "images/clear.png";
-}
+        document.querySelector(".city").textContent = data.name;
+        document.querySelector(".temp").textContent = `${Math.round(data.main.temp)}°c`;
+        document.querySelector(".humidity").textContent = `${data.main.humidity}%`;
+        document.querySelector(".wind").textContent = `${data.wind.speed}km/h`;
 
-else if(data.weather[0].main =="Rain"){
-    weatherIcon.src = "images/rain.png";
-}
+        const condition = data.weather[0].main;
+        const weatherImages = {
+          Clouds: "images/clouds.png",
+          Clear: "images/clear.png",
+          Rain: "images/rain.png",
+          Drizzle: "images/drizzle.png",
+          Mist: "images/mist.png"
+        };
 
-else if(data.weather[0].main =="Drizzle"){
-    weatherIcon.src = "images/drizzle.png";
-}
-else if(data.weather[0].main =="Mist"){
-    weatherIcon.src = "images/mist.png";
-}
+        weatherIcon.src = weatherImages[condition] || "images/rain.png";
+        weatherBlock.style.display = "block";
+        errorBlock.style.display = "none";
+      }
 
-document.querySelector(".weather").style.display = "block";
-document.querySelector(".error").style.display = "none";
-}
-
-
-searchBtn.addEventListener("click", ()=> {
-    if (searchBox.value.trim() ==="") return;
-   checkWeather(searchBox.value);
-});
-</script>
-
-    </body>
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setTheme(savedTheme ? savedTheme === "dark" : prefersDark);
+    </script>
+  </body>
 </html>
